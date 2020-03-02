@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "SaveAnyImage",
+    "version": "0.1",
+    "content_scripts": [
+        {
+            "matches": [
+            "<all_urls>"
+            ],
+            "js": ["content.js"]
+        }
+    ],
+    "browser_action": {
+        "default_icon": "getsome_favicon_64_64.png"
+    }
+    
+}
