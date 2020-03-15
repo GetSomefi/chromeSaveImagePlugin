@@ -1,7 +1,27 @@
-    console.log("Chrome Save Image is: active");
+let times = 0;
+let clickCount = 0;
+setInterval(function(){
+    times++;
+    console.log(times + " Chrome Save Image is: active");
 
     function rint() {
         return Math.floor(Math.random() * Math.floor(1000000));
+    }
+
+    let c = document.getElementsByTagName("canvas");
+    //console.log("c", c)
+    for (let i = 0; i < c.length; i++) {
+    	
+    	c[i].addEventListener('contextmenu',function(e){
+            clickCount++;
+    		console.log('canvas');
+    		var link=document.createElement("a");
+    		e.stopImmediatePropagation();
+            e.preventDefault();
+    		link.href= this.toDataURL('image/jpg');   //function blocks CORS
+            link.download = 'chromeSaveImagePlugin' + '_' + clickCount + '_' + i + '_' + rint() + '.jpg';
+            link.click();	
+    	}, false);
     }
 
     let images = document.getElementsByTagName("img");
@@ -84,3 +104,5 @@
             
         });
     }
+
+},1000);
